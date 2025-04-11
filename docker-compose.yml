@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  travilla-agency-panel:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3500:3500"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    restart: always
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - WDS_SOCKET_HOST=127.0.0.1 
+      - WATCHPACK_POLLING=true 
+    stdin_open: true
+    tty: true
